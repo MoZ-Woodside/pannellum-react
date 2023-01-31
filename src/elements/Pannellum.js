@@ -9,6 +9,7 @@ import "../pannellum/js/RequestAnimationFrame";
 
 class Pannellum extends PureComponent {
   constructor(props) {
+    console.log('Pannellum w3.1');
     super(props);
     this.state = {
       id: Math.random()
@@ -271,6 +272,10 @@ class Pannellum extends PureComponent {
     if (prevProps.hfov !== this.props.hfov) {
       this.panorama.setHfov(this.props.hfov);
     }
+  }
+
+  componentWillUnmount = () => {
+    this.panorama.cleanUp();
   }
 
   handleClickHotspot = (e, args) => {
